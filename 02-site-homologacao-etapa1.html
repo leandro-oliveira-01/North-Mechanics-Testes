@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>North Mechanics 2.0 (Teste) | Recrutamento</title>
+<style>
+:root{--red:#ff1738;--red2:#ff4058;--bg:#070707;--panel:#111113;--field:#202023;--muted:#a4a4ad;--white:#f5f5f7;--line:#303036}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 10%,#26070d 0,transparent 36%),var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{width:min(100% - 28px,980px);margin:auto;padding:28px 0 56px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:34px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}.mark{width:54px;height:54px;display:grid;place-items:center;border:1px solid #ff173866;border-radius:16px;background:#16080b;box-shadow:0 0 22px #ff17382a;position:relative}.mark svg{width:34px;height:34px;filter:drop-shadow(0 0 5px #ff1738)}.mark.site-logo{width:76px;height:76px;flex:0 0 76px;border:0;border-radius:0;background:transparent;box-shadow:none}.mark.site-logo img{display:block;width:100%;height:100%;object-fit:contain}.brand-name{font-weight:900;letter-spacing:1.3px;line-height:1.05;font-size:clamp(17px,3vw,22px)}.brand-name span{color:var(--red)}.brand-sub{font-size:10px;color:#aaa;letter-spacing:3px;margin-top:5px}.nav{display:flex;gap:8px;flex-wrap:wrap}.nav button,.ghost{border:1px solid var(--line);background:#121214;color:#ddd;border-radius:10px;padding:10px 14px;transition:.2s}.nav button:hover,.nav button.active{border-color:var(--red);color:#fff;box-shadow:0 0 16px #ff17382b}.hero{text-align:center;margin:16px auto 22px;max-width:680px}.eyebrow{color:var(--red2);text-transform:uppercase;letter-spacing:3px;font-size:11px;font-weight:800}.hero h1{font-size:clamp(28px,5vw,42px);margin:10px 0 8px;letter-spacing:-1px}.hero h1 em{font-style:normal;color:var(--red);text-shadow:0 0 22px #ff17385c}.hero p{color:var(--muted);font-size:14px;line-height:1.6;margin:0 auto;max-width:540px}.panel{width:min(100%,610px);margin:0 auto;background:linear-gradient(145deg,#141416,#0d0d0f);border:1px solid #ff17385c;border-radius:18px;padding:clamp(18px,4vw,30px);box-shadow:0 0 0 1px #ff17380d,0 0 32px #ff17382b,0 18px 60px #0008;animation:rise .55s ease both}.panel.wide{width:100%;max-width:900px}@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}.section-title{font-size:17px;font-weight:800;margin:0 0 5px}.section-note{font-size:12px;color:var(--muted);margin:0 0 22px}.field{margin-bottom:14px}.field label,.label{display:block;font-size:12px;font-weight:700;color:#e8e8ec;margin:0 0 8px}.field input,.field textarea,.field select,.search{width:100%;background:var(--field);border:1px solid transparent;border-radius:9px;color:#fff;padding:13px 14px;outline:none;transition:border .2s,box-shadow .2s}.field input:focus,.field textarea:focus,.field select:focus,.search:focus{border-color:var(--red);box-shadow:0 0 0 3px #ff17381c}.field input::placeholder,.field textarea::placeholder{color:#85858e}.field textarea{min-height:88px;resize:vertical}.field select{appearance:auto}.days{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.day{position:relative}.day input{position:absolute;opacity:0;pointer-events:none}.day span{display:block;text-align:center;padding:11px 4px;border:1px solid #39393f;border-radius:9px;background:#19191c;color:#c5c5cc;font-size:12px;transition:.2s}.day input:checked+span{background:#3a0b13;border-color:var(--red);color:#fff;box-shadow:inset 0 0 0 1px #ff173844,0 0 13px #ff173820}.day span:hover{border-color:#a62a3b}.inline-check{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:#d4d4da;line-height:1.5;margin:18px 0}.inline-check input{accent-color:var(--red);margin-top:2px;width:16px;height:16px;flex:none}.primary{width:100%;border:0;border-radius:10px;padding:14px 16px;color:white;font-weight:900;background:linear-gradient(100deg,#d80c2a,var(--red),#ff4058);box-shadow:0 0 22px #ff17382b;transition:transform .2s,box-shadow .2s}.primary:hover{transform:translateY(-1px);box-shadow:0 0 28px #ff17385c}.primary:disabled{opacity:.45;cursor:not-allowed}.message{display:none;border-radius:10px;padding:12px 14px;font-size:13px;margin:0 0 15px}.message.show{display:block}.message.error{background:#351016;border:1px solid #ff405855;color:#ffc5cd}.message.success{background:#102b1d;border:1px solid #39c87955;color:#b8f6d0}.small-link{background:none;border:0;color:#ff667b;text-decoration:underline;padding:0}.hidden{display:none!important}.foot{text-align:center;color:#6f6f78;font-size:11px;margin-top:22px}.badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:1px;color:#ff9aaa;border:1px solid #ff17384d;background:#26080e;border-radius:100px;padding:6px 10px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.admin-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:20px}.admin-head h2{margin:0 0 5px;font-size:22px}.admin-head p{margin:0;color:var(--muted);font-size:12px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.toolbar .search{flex:1;min-width:170px}.toolbar button{border:1px solid var(--line);border-radius:9px;background:#19191c;color:#eee;padding:10px 12px}.request-list{display:grid;gap:10px}.request{border:1px solid #303036;border-radius:12px;background:#151517;padding:15px}.request-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.request h3{margin:0;font-size:15px}.request small{color:var(--muted)}.request p{font-size:12px;color:#c9c9d0;line-height:1.6;margin:10px 0}.request-actions{display:flex;gap:8px;flex-wrap:wrap}.request-actions button{background:#202024;color:#eee;border:1px solid #38383f;border-radius:8px;padding:8px 10px;font-size:12px}.request-actions button.danger{border-color:#792031;color:#ff9aaa}.empty{border:1px dashed #3a3a41;border-radius:12px;padding:30px;text-align:center;color:var(--muted);font-size:13px}.security-note{font-size:11px;color:#a8a8b0;line-height:1.6;border-top:1px solid #2d2d33;margin-top:18px;padding-top:14px}@media(max-width:540px){.shell{width:min(100% - 20px,980px);padding-top:18px}.topbar{align-items:flex-start;flex-direction:column;margin-bottom:26px}.nav{width:100%}.nav button{flex:1}.days{grid-template-columns:repeat(3,minmax(0,1fr))}.grid2{grid-template-columns:1fr}.brand-sub{letter-spacing:2px}}
+ .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tabs button{border:1px solid #34343a;background:#1b1b1f;color:#ddd;border-radius:9px;padding:11px 15px}.tabs button.active{background:#3a1018;border-color:var(--red);color:#fff}.member-role{background:#242429;border:1px solid #444;border-radius:8px;color:#fff;padding:8px}.member-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:10px}.member-actions button{border:1px solid #555;background:#29292d;color:white;padding:9px;border-radius:8px}.member-actions .approve{background:#174c2c;border-color:#24834b}.member-actions .danger{background:#4c1821;border-color:#933042}.state{font-size:12px;color:#c4c4cc} 
+/* North Mechanics 2.0 - Etapa 1 */
+.v2-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 16px}
+.v2-filters label{font-size:12px;color:#c7c7ce;display:grid;gap:7px}
+.v2-filters select{width:100%;padding:10px 9px;background:#202023;color:#fff;border:1px solid #42424a;border-radius:9px}
+.v2-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px}
+.v2-actions select{background:#202023;border:1px solid #42424a;color:#fff;padding:9px;border-radius:8px;min-width:150px}
+.v2-actions button{background:#26262d;border:1px solid #565663;border-radius:8px;padding:9px 12px;color:#fff}
+.v2-warning{padding:10px 12px;margin-top:10px;border-radius:8px;color:#ffd8a5;background:#362414;border:1px solid #815426;font-size:12px}
+.v2-result{margin:0 0 12px;color:#aaa;font-size:12px}
+@media(max-width:600px){.v2-filters{grid-template-columns:1fr}.v2-actions select{flex:1}}
+
+/* Premium Dark: acabamento inicial da Etapa 1 (evolucao visual mais ampla depois) */
+:root{--bg:#0b0d11;--panel:#171a20;--field:#20242c;--line:#333742}
+.request{background:#171a20;border-color:#333742;box-shadow:0 8px 24px #0004}
+.request:hover{border-color:#ff173855}
+.v2-owner{margin:12px 0 7px;padding:12px 14px;background:#11141a;border:1px solid #343846;border-radius:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:#d8d9df}
+.v2-owner strong{color:#fff}
+.v2-owner .v2-assumed{color:#a2a6b1}
+.v2-owner .owner-dot{width:8px;height:8px;border-radius:50%;background:#ff1738;box-shadow:0 0 9px #ff173888;flex:none}
+.v2-owner.free .owner-dot{background:#8f94a3;box-shadow:none}
+.v2-claim{border:1px solid #ff4058!important;background:#3a101b!important;color:#ffd7e0!important}
+.v2-transfer{background:#20242c;color:#f5f5f7;border:1px solid #414655;border-radius:8px;padding:9px;min-width:135px;max-width:100%}
+.v2-recruit-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}
+.v2-recruit-actions button{background:#252a34;color:#f5f5f7;border:1px solid #474b57;border-radius:8px;padding:10px 12px;font-weight:650}
+.v2-recruit-actions button:disabled{opacity:.5;cursor:wait}
+.v2-tip{font-size:12px;color:#aaaebc;margin:8px 0}
+.v2-dev-mark{color:#ffc5ce;font-size:11px;text-align:center;letter-spacing:1px;border:1px dashed #83313e;background:#281019;padding:9px;margin-bottom:18px;border-radius:9px}
+@media(max-width:600px){.v2-recruit-actions button{flex:1}.v2-transfer{width:100%}}
+</style>
+</head>
+<body>
+<div class="shell">
+<div class="v2-dev-mark">NORTH MECHANICS 2.0 · AMBIENTE DE TESTE · NAO UTILIZAR DADOS REAIS ATE CONFIGURAR A HOMOLOGACAO</div>
+<header class="topbar">
+  <a class="brand" href="#" aria-label="North Mechanics início" onclick="showView('apply');return false">
+    <div class="mark site-logo" aria-hidden="true"><img src="NORTH-MECHANICS.png" alt="" width="76" height="76" decoding="async"></div>
+    <div><div class="brand-name">NORTH <span>MECHANICS</span></div><div class="brand-sub">PERFORMANCE GARAGE</div></div>
+  </a>
+  <nav class="nav" aria-label="Navegação">
+    <button id="navApply" class="active" onclick="showView('apply')">Recrutamento</button>
+    <button id="navAccess" onclick="showView('access')">Área restrita</button>
+  </nav>
+</header>
+
+<main>
+<section id="viewApply">
+  <div class="hero"><div class="eyebrow">Faça parte da equipe</div><h1>Recrutamento <em>North</em></h1><p>Preencha seus dados e informe sua disponibilidade. Nossa equipe analisará sua solicitação.</p></div>
+  <form class="panel" id="applicationForm">
+    <div id="applyMessage" class="message" role="status"></div>
+    <h2 class="section-title">Ficha de recrutamento</h2><p class="section-note">Preencha os campos abaixo com seus dados do personagem (RP).</p>
+    <div class="field"><label for="fullName">Nome completo (RP) *</label><input id="fullName" name="fullName" maxlength="100" placeholder="Digite o nome do personagem" required></div>
+    <div class="grid2">
+      <div class="field"><label for="passport">Passaporte (RP) *</label><input id="passport" name="passport" maxlength="30" placeholder="Número do passaporte" required></div>
+      <div class="field"><label for="phone">Telefone (RP) *</label><input id="phone" name="phone" maxlength="30" placeholder="Telefone do personagem" required></div>
+    </div>
+    <div class="field"><span class="label">Dias disponíveis *</span><div class="days" id="days">
+      <label class="day"><input type="checkbox" value="Segunda-feira"><span>Segunda</span></label>
+      <label class="day"><input type="checkbox" value="Terça-feira"><span>Terça</span></label>
+      <label class="day"><input type="checkbox" value="Quarta-feira"><span>Quarta</span></label>
+      <label class="day"><input type="checkbox" value="Quinta-feira"><span>Quinta</span></label>
+      <label class="day"><input type="checkbox" value="Sexta-feira"><span>Sexta</span></label>
+      <label class="day"><input type="checkbox" value="Sábado"><span>Sábado</span></label>
+      <label class="day"><input type="checkbox" value="Domingo"><span>Domingo</span></label>
+    </div></div>
+    <div class="field"><label for="hours">Horários disponíveis *</label><textarea id="hours" maxlength="500" placeholder="Ex.: segunda a sexta, das 19h às 23h; sábado à tarde..." required></textarea></div>
+    <div class="field"><label for="discord">ID do Discord *</label><input id="discord" type="text" inputmode="numeric" autocomplete="off" minlength="17" maxlength="20" pattern="[0-9]{17,20}" title="Informe somente o ID numérico do usuário no Discord (17 a 20 dígitos)" placeholder="Ex.: 123456789012345678" aria-describedby="discord-help" required><div id="discord-help" style="font-size:12px;line-height:1.5;color:#a4a4ad;margin-top:7px">Somente números, sem @ ou nome de usuário. No Discord: ative o Modo Desenvolvedor nas configurações e escolha <strong>Copiar ID do usuário</strong> no perfil.</div></div>
+    <div class="field"><label for="experience">Já trabalhou como mecânico? *</label><select id="experience" required><option value="">Selecione uma opção</option><option>Sim, tenho experiência</option><option>Não, será minha primeira experiência</option></select></div>
+    <div class="field"><label for="about">Conte um pouco sobre você (opcional)</label><textarea id="about" maxlength="800" placeholder="Experiência, interesse na vaga ou outras informações..."></textarea></div>
+    <label class="inline-check"><input type="checkbox" id="confirm" required><span>Confirmo que as informações enviadas são verdadeiras e que estou informando apenas dados do personagem (RP).</span></label>
+    <button class="primary" type="submit">Enviar solicitação</button>
+  </form>
+  <div class="foot">NORTH MECHANICS · RECRUTAMENTO RP</div>
+</section>
+
+<section id="viewAccess" class="hidden">
+  <div class="hero"><div class="eyebrow">Somente equipe autorizada</div><h1>Área <em>restrita</em></h1><p>Entre com seu e-mail e senha cadastrados para acessar as solicitações recebidas.</p></div>
+  <div class="panel" id="authPanel">
+    <div id="authMessage" class="message" role="status"></div>
+    <div id="loginFormWrap">
+      <h2 class="section-title">Entrar na área administrativa</h2><p class="section-note">Entre com sua conta administrativa autorizada no Supabase.</p>
+      <form id="loginForm">
+        <div class="field"><label for="loginEmail">E-mail *</label><input id="loginEmail" type="email" autocomplete="username" placeholder="admin@exemplo.com" required></div>
+        <div class="field"><label for="loginPassword">Senha *</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Sua senha" required></div>
+        <button class="primary" type="submit">Entrar</button>
+      </form>
+      <p style="text-align:center;font-size:12px;margin:18px 0 0"><button type="button" class="small-link" onclick="toggleRegister(true)">Solicitar acesso à equipe</button></p>
+      <p style="text-align:center;font-size:12px;margin:8px 0 0"><button type="button" id="resendConfirmationButton" class="small-link" onclick="resendConfirmation()">Reenviar confirmação de e-mail</button></p>
+    </div>
+    <div id="registerFormWrap" class="hidden">
+      <h2 class="section-title">Solicitar acesso</h2><p class="section-note">Seu cadastro ficará pendente até a aprovação de um ADM ativo. O cargo será escolhido pelo ADM.</p>
+      <form id="registerForm">
+        <div class="field"><label for="registerName">Nome *</label><input id="registerName" maxlength="100" required></div>
+        <div class="field"><label for="registerEmail">E-mail *</label><input id="registerEmail" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="registerPassword">Senha (mínimo 8 caracteres) *</label><input id="registerPassword" type="password" minlength="8" autocomplete="new-password" required></div>
+        <button class="primary" type="submit">Enviar solicitação de acesso</button>
+      </form>
+      <p style="text-align:center;font-size:12px;margin:18px 0 0"><button type="button" class="small-link" onclick="toggleRegister(false)">Voltar ao login</button></p>
+    </div>
+<div class="security-note"><strong>Importante:</strong> A autenticação é feita pelo Supabase. A leitura e a exclusão das solicitações dependem das permissões configuradas no banco de dados.</div>
+  </div>
+  <div id="adminPanel" class="panel wide hidden">
+    <div class="admin-head"><div><span class="badge">● ACESSO AUTORIZADO</span><h2 style="margin-top:12px">Solicitações de recrutamento</h2><p id="adminSummary">Gerencie as solicitações recebidas pelo sistema.</p></div><button class="ghost" onclick="logout()">Sair da conta</button></div>
+    <div id="adminTabs" class="tabs"><button id="tabRecruit" class="active" onclick="switchAdminTab('recruit')">Inscrições</button><button id="tabMembers" class="hidden" onclick="switchAdminTab('members')">Gerenciar administradores</button></div>
+    <div id="recruitSection"><div class="toolbar"><input class="search" id="searchRequests" placeholder="Buscar por nome, passaporte ou ID do Discord..."><button onclick="exportCSV()">Exportar CSV</button></div>
+    <div class="v2-filters">
+      <label>Status<select id="v2StatusFilter"><option value="">Todos</option><option value="pendente">Pendente</option><option value="em_analise">Em análise</option><option value="entrevista">Entrevista</option><option value="aprovado">Aprovado</option><option value="reprovado">Reprovado</option></select></label>
+      <label>Experiência<select id="v2ExperienceFilter"><option value="">Todas</option><option value="sim">Com experiência</option><option value="nao">Sem experiência</option></select></label>
+      <label>Duplicidade<select id="v2DuplicateFilter"><option value="">Todos</option><option value="duplicado">Somente possíveis duplicados</option></select></label>
+      <label>Responsável<select id="v2OwnerFilter"><option value="">Todos</option><option value="meus">Minhas inscrições</option><option value="livres">Sem responsável</option><option value="outros">Outros responsáveis</option></select></label>
+    </div>
+    <div id="v2ResultCount" class="v2-result" aria-live="polite"></div>
+    <div id="v2StatusMessage" class="message" role="status"></div>
+    <div id="requestList" class="request-list"></div></div>
+    <div id="membersSection" class="hidden"><div id="membersMessage" class="message" role="status"></div><h3>Solicitações e membros</h3><p class="section-note">Somente ADM ativo pode aprovar, recusar, mudar cargos ou desativar membros.</p><div id="membersList" class="request-list"></div></div>
+    <div class="security-note">As solicitações são armazenadas no banco centralizado. Somente contas autorizadas pela política do banco podem consultá-las ou excluí-las.</div>
+  </div>
+  <div class="foot">NORTH MECHANICS · PAINEL ADMINISTRATIVO</div>
+</section>
+</main>
+</div>
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const SUPABASE_URL = 'https://SEU-PROJETO-HOMOLOGACAO.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'COLE_A_CHAVE_PUBLICA_DO_PROJETO_DE_TESTE';
+const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+const $ = id => document.getElementById(id);
+let requests = [];
+let activeAssignees = [];
+let currentMember = null;
+let activeTab = "recruit";
+
+window.showView = function(view) {
+  $('viewApply').classList.toggle('hidden', view !== 'apply');
+  $('viewAccess').classList.toggle('hidden', view !== 'access');
+  $('navApply').classList.toggle('active', view === 'apply');
+  $('navAccess').classList.toggle('active', view === 'access');
+  if (view === 'access') refreshAccess();
+};
+
+function showMessage(id, text, type = 'error') {
+  const el = $(id);
+  el.textContent = text;
+  el.className = 'message show ' + type;
+}
+function clearMessage(id) { $(id).className = 'message'; }
+function escapeHTML(value) {
+  return String(value ?? '').replace(/[&<>"']/g, ch => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[ch]));
+}
+
+window.toggleRegister = function(show) {
+  $('registerFormWrap').classList.toggle('hidden', !show);
+  $('loginFormWrap').classList.toggle('hidden', show);
+  clearMessage('authMessage');
+};
+
+window.resendConfirmation = async function() {
+  clearMessage('authMessage');
+  const email = $('loginEmail').value.trim();
+  if (!email) {
+    showMessage('authMessage', 'Informe seu e-mail no campo acima para solicitar uma nova confirmação.');
+    $('loginEmail').focus();
+    return;
+  }
+  const button = $('resendConfirmationButton');
+  button.disabled = true;
+  try {
+    const { error } = await supabase.auth.resend({ type: 'signup', email });
+    if (error) throw error;
+    showMessage('authMessage', 'Se existir uma confirmação pendente para este endereço, você receberá um novo e-mail. Confira também a pasta de spam. Aguarde a aprovação de um ADM para acessar o painel.', 'success');
+  } catch (error) {
+    console.error('Falha ao reenviar confirmação:', error);
+    showMessage('authMessage', 'Não foi possível reenviar a confirmação. Confira se o serviço de e-mails está configurado no Supabase. Detalhe: ' + (error.message || 'erro de envio'));
+  } finally { button.disabled = false; }
+};
+
+$('registerForm').addEventListener('submit', async event => {
+  event.preventDefault(); clearMessage('authMessage');
+  const button = event.submitter; button.disabled = true;
+  try {
+    const { data, error } = await supabase.auth.signUp({
+      email: $('registerEmail').value.trim(), password: $('registerPassword').value,
+      options: { data: { full_name: $('registerName').value.trim() } }
+    });
+    if (error) throw error;
+    event.target.reset(); toggleRegister(false);
+    showMessage('authMessage', 'Solicitação recebida. Se a confirmação por e-mail estiver habilitada, confirme seu endereço. Aguarde a aprovação de um ADM para acessar o painel.', 'success');
+    if (data.session) await supabase.auth.signOut();
+  } catch(e) { console.error(e); showMessage('authMessage', 'Não foi possível criar a conta: ' + e.message); }
+  finally { button.disabled = false; }
+});
+
+async function refreshAccess() {
+  const { data: { session } } = await supabase.auth.getSession();
+  currentMember = null;
+  if (session) {
+    const { data, error } = await supabase.from('team_members').select('user_id,nome,email,cargo,status').eq('user_id',session.user.id).maybeSingle();
+    if (!error && data?.status === 'ativo' && ['adm','recrutador'].includes(data.cargo)) currentMember = data;
+  }
+  const authorized = !!currentMember;
+  $('authPanel').classList.toggle('hidden', authorized);
+  $('adminPanel').classList.toggle('hidden', !authorized);
+  $('tabMembers').classList.toggle('hidden', currentMember?.cargo !== 'adm');
+  if (currentMember?.cargo !== 'adm') activeTab = 'recruit';
+  if (authorized) {
+    $('adminSummary').textContent = `${currentMember.nome} · ${currentMember.cargo === 'adm' ? 'ADM' : 'Recrutador'}`;
+    switchAdminTab(activeTab);
+  } else if (session) {
+    toggleRegister(false);
+    showMessage('authMessage', 'Sua conta está pendente, recusada ou desativada. Apenas membros ativos podem entrar. Se sua conta já foi aprovada, saia e entre novamente.', 'error');
+    await supabase.auth.signOut();
+  }
+}
+
+window.switchAdminTab = function(tab) {
+  if (tab === 'members' && currentMember?.cargo !== 'adm') return;
+  activeTab = tab;
+  $('recruitSection').classList.toggle('hidden', tab !== 'recruit');
+  $('membersSection').classList.toggle('hidden', tab !== 'members');
+  $('tabRecruit').classList.toggle('active', tab === 'recruit');
+  $('tabMembers').classList.toggle('active', tab === 'members');
+  if (tab === 'members') renderMembers(); else renderRequests();
+};
+
+async function renderMembers() {
+  if (currentMember?.cargo !== 'adm') return;
+  const list = $('membersList'); list.innerHTML = '<div class="empty">Carregando membros...</div>';
+  const { data, error } = await supabase.from('team_members').select('user_id,nome,email,cargo,status,created_at').order('created_at', {ascending:false});
+  if (error) { list.innerHTML = '<div class="empty">Não foi possível consultar os membros: '+escapeHTML(error.message)+'</div>'; return; }
+  if (!data?.length) { list.innerHTML = '<div class="empty">Nenhum membro cadastrado.</div>'; return; }
+  list.innerHTML = data.map(m => {
+    const self = m.user_id === currentMember.user_id;
+    const pending = m.status === 'pendente';
+    return `<article class="request"><div class="request-top"><div><h3>${escapeHTML(m.nome)}</h3><small>${escapeHTML(m.email)}</small></div><span class="badge">${escapeHTML(m.status.toUpperCase())}</span></div>
+      <p>Cargo atual: <strong>${escapeHTML(m.cargo || 'Ainda não definido')}</strong></p>
+      ${self ? '<p>Esta é a sua conta. Você não pode alterar o próprio acesso.</p>' : `<div class="member-actions">
+        <label class="state" for="role-${escapeHTML(m.user_id)}">Cargo:</label>
+        <select class="member-role" id="role-${escapeHTML(m.user_id)}"><option value="recrutador" ${m.cargo==='recrutador'?'selected':''}>Recrutador</option><option value="adm" ${m.cargo==='adm'?'selected':''}>ADM</option></select>
+        ${pending ? `<button class="approve" data-action="aprovar" data-id="${escapeHTML(m.user_id)}">Aprovar</button><button class="danger" data-action="recusar" data-id="${escapeHTML(m.user_id)}">Recusar</button>` : ''}
+        ${m.status==='ativo' ? `<button data-action="cargo" data-id="${escapeHTML(m.user_id)}">Salvar cargo</button><button class="danger" data-action="desativar" data-id="${escapeHTML(m.user_id)}">Desativar</button>` : ''}
+        ${m.status==='inativo' ? `<button class="approve" data-action="reativar" data-id="${escapeHTML(m.user_id)}">Reativar</button>` : ''}
+      </div>`}
+    </article>`;
+  }).join('');
+}
+
+$('membersList').addEventListener('click', async event => {
+  const btn = event.target.closest('button[data-action]'); if (!btn || currentMember?.cargo !== 'adm') return;
+  const id = btn.dataset.id, action = btn.dataset.action;
+  const role = document.getElementById('role-'+id)?.value || 'recrutador';
+  if (!confirm(`Confirmar ação: ${action} (${role})?`)) return;
+  btn.disabled = true;
+  const { error } = await supabase.rpc('manage_team_member', { target_user_id:id, requested_action:action, requested_role:role });
+  if (error) { showMessage('membersMessage', 'Erro: '+error.message); btn.disabled = false; return; }
+  showMessage('membersMessage', 'Alteração realizada com sucesso.', 'success');
+  await renderMembers();
+});
+
+window.logout = async function() {
+  await supabase.auth.signOut();
+  requests = [];
+  $('searchRequests').value = '';
+  currentMember = null;
+  await refreshAccess();
+};
+
+$('applicationForm').addEventListener('submit', async event => {
+  event.preventDefault();
+  clearMessage('applyMessage');
+
+  const days = [...document.querySelectorAll('#days input:checked')].map(input => input.value);
+  if (!days.length) {
+    showMessage('applyMessage', 'Selecione pelo menos um dia da semana.');
+    return;
+  }
+  if (!$('confirm').checked) {
+    showMessage('applyMessage', 'Confirme as informações antes de enviar.');
+    return;
+  }
+
+  const submitButton = event.submitter;
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = 'Enviando...';
+  }
+
+  const payload = {
+    nome_completo: $('fullName').value.trim(),
+    passaporte: $('passport').value.trim(),
+    telefone: $('phone').value.trim(),
+    dias_disponiveis: days,
+    horario_disponivel: $('hours').value.trim(),
+    discord_id: $('discord').value.trim(),
+    confirmou_regras: $('confirm').checked,
+    experiencia: $('experience').value,
+    sobre: $('about').value.trim() || null
+  };
+
+  try {
+    const { error } = await supabase.from('inscricoes').insert(payload);
+    if (error) throw error;
+    event.target.reset();
+    showMessage('applyMessage', 'Solicitação enviada com sucesso! A equipe North Mechanics analisará seus dados.', 'success');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (error) {
+    console.error('Erro ao enviar inscrição:', error);
+    showMessage('applyMessage', 'Não foi possível enviar sua solicitação. Verifique a configuração do banco e tente novamente.');
+  } finally {
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Enviar solicitação';
+    }
+  }
+});
+
+$('loginForm').addEventListener('submit', async event => {
+  event.preventDefault();
+  clearMessage('authMessage');
+  const submitButton = event.submitter;
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = 'Entrando...';
+  }
+
+  try {
+    const { error } = await supabase.auth.signInWithPassword({
+      email: $('loginEmail').value.trim(),
+      password: $('loginPassword').value
+    });
+    if (error) throw error;
+    event.target.reset();
+    await refreshAccess();
+  } catch (error) {
+    console.error('Falha no login:', { code: error.code, status: error.status, message: error.message });
+    if (error.code === 'email_not_confirmed') {
+      showMessage('authMessage', 'Seu e-mail ainda não foi confirmado no Supabase. Abra o e-mail de confirmação ou use "Reenviar confirmação de e-mail" abaixo.');
+    } else if (error.code === 'invalid_credentials') {
+      showMessage('authMessage', 'E-mail ou senha incorretos. Confira o mesmo e-mail e a senha usados no cadastro. Se não lembrar a senha, peça a redefinição ao administrador.');
+    } else if (error.code === 'over_email_send_rate_limit' || error.status === 429) {
+      showMessage('authMessage', 'Muitas tentativas em pouco tempo. Aguarde alguns minutos e tente novamente.');
+    } else {
+      showMessage('authMessage', 'Falha ao entrar no Supabase: ' + (error.message || 'erro desconhecido') + (error.code ? ' (' + error.code + ')' : ''));
+    }
+  } finally {
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Entrar';
+    }
+  }
+});
+
+const V2_STATUS_LABELS = {
+  pendente:'Pendente', em_analise:'Em análise', entrevista:'Entrevista',
+  aprovado:'Aprovado', reprovado:'Reprovado'
+};
+const v2Normalize = value => String(value ?? '').trim().toLocaleLowerCase('pt-BR').replace(/\s+/g,'');
+const v2Status = item => V2_STATUS_LABELS[item.status_candidato] ? item.status_candidato : 'pendente';
+
+for (const id of ['searchRequests','v2StatusFilter','v2ExperienceFilter','v2DuplicateFilter','v2OwnerFilter']) {
+  $(id).addEventListener(id === 'searchRequests' ? 'input' : 'change', paintRequests);
+}
+
+async function renderRequests() {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session || !currentMember) return;
+  $('requestList').innerHTML = '<div class="empty">Carregando solicitações...</div>';
+  const { data, error } = await supabase.from('inscricoes').select('*').order('created_at',{ascending:false});
+  if (error) {
+    console.error('Erro ao carregar inscrições:', error);
+    $('requestList').innerHTML = '<div class="empty">Não foi possível carregar as inscrições. Confira as permissões no Supabase.</div>';
+    return;
+  }
+  requests = data || [];
+  const { data: colleagues, error: colleagueError } = await supabase.rpc('north_active_recruiters');
+  if (colleagueError) {
+    console.error('Falha ao consultar responsaveis', colleagueError);
+    showMessage('v2StatusMessage', 'A lista de responsáveis não pôde ser carregada. Confira a migração SQL da etapa 1. ' + (colleagueError.message || ''));
+    activeAssignees = [];
+  } else activeAssignees = colleagues || [];
+  paintRequests();
+}
+
+function paintRequests() {
+  if (!currentMember) return;
+  const counts = {passaporte:new Map(),discord:new Map()};
+  for(const item of requests) {
+    for(const field of ['passaporte','discord']) {
+      const value=v2Normalize(field==='discord'?item.discord_id:item.passaporte);
+      if(value) counts[field].set(value,(counts[field].get(value)||0)+1);
+    }
+  }
+  const duplicatesFor = item => {
+    const found=[];
+    for(const [field,label] of [['passaporte','passaporte RP'],['discord','ID do Discord']]) {
+      const value=v2Normalize(field==='discord'?item.discord_id:item.passaporte);
+      if(value && (counts[field].get(value)||0)>1) found.push(label);
+    }
+    return found;
+  };
+  const query=($('searchRequests').value||'').toLocaleLowerCase('pt-BR').trim();
+  const status=$('v2StatusFilter').value;
+  const experience=$('v2ExperienceFilter').value;
+  const duplicates=$('v2DuplicateFilter').value;
+  const ownerFilter=$('v2OwnerFilter').value;
+  const filtered=requests.filter(item=>{
+    if(query && ![item.nome_completo,item.passaporte,item.discord_id,item.telefone].join(' ').toLocaleLowerCase('pt-BR').includes(query)) return false;
+    if(status && v2Status(item)!==status) return false;
+    if(experience){
+      const has=String(item.experiencia||'').trim().toLocaleLowerCase('pt-BR').startsWith('sim');
+      if(experience==='sim'?!has:has) return false;
+    }
+    if(duplicates==='duplicado' && !duplicatesFor(item).length) return false;
+    const owner = item.responsavel_id || null;
+    if (ownerFilter==='meus' && owner!==currentMember.user_id) return false;
+    if (ownerFilter==='livres' && owner!==null) return false;
+    if (ownerFilter==='outros' && (!owner || owner===currentMember.user_id)) return false;
+    return true;
+  });
+  $('adminSummary').textContent=requests.length+' solicitação(ões) recebida(s) no banco.';
+  $('v2ResultCount').textContent=filtered.length+' de '+requests.length+' inscrições exibidas. Possíveis duplicidades são avisos, não bloqueios.';
+  const list=$('requestList');
+  if(!filtered.length){
+    list.innerHTML='<div class="empty">'+(requests.length?'Nenhuma inscrição corresponde aos filtros.':'Nenhuma inscrição recebida ainda.')+'</div>';
+    return;
+  }
+  list.innerHTML=filtered.map(item=>{
+    const created=item.created_at?new Date(item.created_at).toLocaleString('pt-BR'):'Data indisponível';
+    const days=Array.isArray(item.dias_disponiveis)?item.dias_disponiveis.map(escapeHTML).join(', '):'';
+    const idArg=JSON.stringify(String(item.id));
+    const discordArg=JSON.stringify(String(item.discord_id||''));
+    const possibleDuplicates=duplicatesFor(item);
+    const badge=possibleDuplicates.length?`<div class="v2-warning">⚠ Possível inscrição duplicada por ${escapeHTML(possibleDuplicates.join(' e '))}. Confira antes de decidir.</div>`:'';
+    const currentStatus=v2Status(item);
+    const ownerId=item.responsavel_id||null;
+    const ownerName=ownerId ? (activeAssignees.find(m=>m.user_id===ownerId)?.nome||'Membro inativo ou indisponível') : 'Ninguém assumiu esta inscrição';
+    const isMine=ownerId===currentMember.user_id;
+    const isAdmin=currentMember.cargo==='adm';
+    const canEditStatus=isAdmin||isMine;
+    const closed=['aprovado','reprovado'].includes(currentStatus);
+    const claimButton=!ownerId&&!closed?'<button type="button" class="v2-claim" data-v2-claim="'+escapeHTML(String(item.id))+'">Assumir inscrição</button>':'';
+    const releaseButton=ownerId&&(isMine||isAdmin)?'<button type="button" data-v2-release="'+escapeHTML(String(item.id))+'">Liberar inscrição</button>':'';
+    const transferOptions=activeAssignees.filter(m=>m.user_id!==ownerId).map(m=>'<option value="'+escapeHTML(m.user_id)+'">'+escapeHTML(m.nome)+' ('+escapeHTML(m.cargo.toUpperCase())+')</option>').join('');
+    const transferTools=isAdmin&&!closed&&transferOptions?'<select class="v2-transfer" data-v2-target="'+escapeHTML(String(item.id))+'" aria-label="Novo responsável"><option value="">Transferir para...</option>'+transferOptions+'</select><button type="button" data-v2-transfer="'+escapeHTML(String(item.id))+'">Transferir</button>':'';
+    const ownerMarkup='<div class="v2-owner '+(!ownerId?'free':'')+'"><span class="owner-dot" aria-hidden="true"></span><div><strong>Responsável: '+escapeHTML(ownerName)+'</strong>'+(item.assumida_em ? '<div class="v2-assumed">Assumida em '+escapeHTML(new Date(item.assumida_em).toLocaleString('pt-BR'))+'</div>' : '')+'</div></div>';
+    const options=Object.entries(V2_STATUS_LABELS).map(([value,label])=>`<option value="${value}" ${currentStatus===value?'selected':''}>${label}</option>`).join('');
+    return `<article class="request">
+      <div class="request-top"><div><h3>${escapeHTML(item.nome_completo)}</h3><small>Recebida em ${escapeHTML(created)}</small></div><span class="badge">PASSAPORTE ${escapeHTML(item.passaporte)}</span></div>
+      <p><strong>Telefone:</strong> ${escapeHTML(item.telefone)}<br><strong>ID do Discord:</strong> ${escapeHTML(item.discord_id)}<br><strong>Dias:</strong> ${days}<br><strong>Horários:</strong> ${escapeHTML(item.horario_disponivel)}<br><strong>Experiência:</strong> ${escapeHTML(item.experiencia||'Não informado')}${item.sobre?'<br><strong>Sobre:</strong> '+escapeHTML(item.sobre):''}</p>
+      ${badge}
+      ${ownerMarkup}
+      <div class="v2-recruit-actions">${claimButton}${releaseButton}${transferTools}</div>
+      ${canEditStatus?`<div class="v2-actions"><label for="v2-status-${escapeHTML(String(item.id))}">Status:</label><select id="v2-status-${escapeHTML(String(item.id))}" data-candidate-status="${escapeHTML(String(item.id))}">${options}</select><button data-save-status="${escapeHTML(String(item.id))}">Salvar status</button></div>`:'<p class="v2-tip">Para alterar o status, assuma esta inscrição. Se ela já tiver responsável, peça a transferência a um ADM.</p>'}
+      <div class="request-actions"><button type="button" data-copy-discord="${escapeHTML(String(item.discord_id||''))}">Copiar ID do Discord</button>${currentMember?.cargo==='adm'?`<button type="button" class="danger" data-delete-request="${escapeHTML(String(item.id))}">Excluir solicitação</button>`:''}</div>
+    </article>`;
+  }).join('');
+}
+
+$('requestList').addEventListener('click',async event=>{
+  const copyButton=event.target.closest('button[data-copy-discord]');
+  if(copyButton){await window.copyDiscord(copyButton.dataset.copyDiscord||'');return;}
+  const deleteButton=event.target.closest('button[data-delete-request]');
+  if(deleteButton){await window.deleteRequest(deleteButton.dataset.deleteRequest);return;}
+  const claim=event.target.closest('button[data-v2-claim]');
+  const release=event.target.closest('button[data-v2-release]');
+  const transfer=event.target.closest('button[data-v2-transfer]');
+  const ownerButton=claim||release||transfer;
+  if(ownerButton){
+    const id=ownerButton.dataset.v2Claim||ownerButton.dataset.v2Release||ownerButton.dataset.v2Transfer;
+    const action=claim?'assumir':release?'liberar':'transferir';
+    const target=transfer ? document.querySelector('[data-v2-target="'+id+'"]')?.value : null;
+    if(transfer&&!target){showMessage('v2StatusMessage','Escolha o novo responsável antes de transferir.');return;}
+    if(release&&!confirm('Liberar esta inscrição para que outra pessoa possa assumir?'))return;
+    if(transfer&&!confirm('Transferir esta inscrição para o membro selecionado?'))return;
+    const fn=claim?'north_take_candidate':release?'north_release_candidate':'north_transfer_candidate';
+    const args={p_inscricao_id:Number(id)};
+    if(transfer)args.p_novo_responsavel=target;
+    ownerButton.disabled=true;
+    clearMessage('v2StatusMessage');
+    try{
+      const {error}=await supabase.rpc(fn,args);
+      if(error)throw error;
+      await renderRequests();
+      showMessage('v2StatusMessage', action==='assumir'?'Inscrição assumida. Se estava Pendente, agora está Em análise.':action==='liberar'?'Inscrição liberada com sucesso.':'Responsável transferido com sucesso.','success');
+    }catch(error){
+      console.error('Falha ao '+action+' inscrição:',error);
+      showMessage('v2StatusMessage','Não foi possível '+action+' a inscrição: '+(error.message||'erro desconhecido'));
+      ownerButton.disabled=false;
+    }
+    return;
+  }
+  const button=event.target.closest('button[data-save-status]');
+  if(!button||!currentMember)return;
+  const id=button.dataset.saveStatus;
+  const select=[...document.querySelectorAll('[data-candidate-status]')].find(el=>el.dataset.candidateStatus===id);
+  if(!select)return;
+  button.disabled=true;
+  clearMessage('v2StatusMessage');
+  try {
+    const {error}=await supabase.rpc('north_set_candidate_status',{p_inscricao_id:Number(id),p_status:select.value});
+    if(error) throw error;
+    showMessage('v2StatusMessage','Status atualizado com sucesso.','success');
+    await renderRequests();
+  } catch(error) {
+    console.error('Falha ao atualizar status',error);
+    showMessage('v2StatusMessage','Não foi possível salvar o status. Verifique se a migração SQL da etapa 1 foi instalada e se seu cargo está ativo. '+(error.message||''));
+  } finally {button.disabled=false;}
+});
+
+window.copyDiscord = async function(value) {
+  try {
+    await navigator.clipboard.writeText(value);
+    alert('ID do Discord copiado.');
+  } catch {
+    alert('ID do Discord: ' + value);
+  }
+};
+
+window.deleteRequest = async function(id) {
+  if (currentMember?.cargo !== 'adm') return;
+  if (!confirm('Deseja excluir esta solicitação? Esta ação não pode ser desfeita.')) return;
+  const { error } = await supabase.from('inscricoes').delete().eq('id', id);
+  if (error) {
+    console.error('Erro ao excluir solicitação:', error);
+    alert('Não foi possível excluir. Confirme se sua conta tem autorização administrativa.');
+    return;
+  }
+  await renderRequests();
+};
+
+window.exportCSV = function() {
+  if (!requests.length) {
+    alert('Não há solicitações para exportar.');
+    return;
+  }
+  const columns = ['Data', 'Nome completo RP', 'Passaporte RP', 'Telefone RP', 'Dias disponíveis', 'Horários', 'ID do Discord', 'Experiência', 'Sobre'];
+  const quote = value => {
+    const raw = String(value ?? '');
+    // Impede que células vindas de candidatos sejam interpretadas como fórmulas.
+    const safe = /^[\s\u0000-\u001f]*[=+\-@]/.test(raw) ? "'" + raw : raw;
+    return '"' + safe.replace(/"/g, '""') + '"';
+  };
+  const csv = [columns, ...requests.map(item => [
+    item.created_at ? new Date(item.created_at).toLocaleString('pt-BR') : '',
+    item.nome_completo, item.passaporte, item.telefone,
+    (item.dias_disponiveis || []).join('; '), item.horario_disponivel,
+    item.discord_id, item.experiencia, item.sobre
+  ])].map(row => row.map(quote).join(';')).join('\r\n');
+
+  const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement('a');
+  anchor.href = url;
+  anchor.download = 'north-mechanics-solicitacoes.csv';
+  anchor.click();
+  URL.revokeObjectURL(url);
+};
+
+supabase.auth.onAuthStateChange(() => {
+  setTimeout(() => refreshAccess(), 0);
+});
+refreshAccess();
+</script>
+</body>
+</html>
