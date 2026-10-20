@@ -133,8 +133,8 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{width:min
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-const SUPABASE_URL = 'https://SEU-PROJETO-HOMOLOGACAO.supabase.co';
-const SUPABASE_PUBLISHABLE_KEY = 'COLE_A_CHAVE_PUBLICA_DO_PROJETO_DE_TESTE';
+const SUPABASE_URL = 'https://wnizohcvvhizvtnseytx.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_rFMIG6YKXxEyV6XTNwI6TQ_Q2ihlqnJ';
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
 const $ = id => document.getElementById(id);
@@ -199,7 +199,7 @@ $('registerForm').addEventListener('submit', async event => {
     });
     if (error) throw error;
     event.target.reset(); toggleRegister(false);
-    showMessage('authMessage', 'Solicitação recebida. Se a confirmação por e-mail estiver habilitada, confirme seu endereço. Aguarde a aprovação de um ADM para acessar o painel.', 'success');
+    showMessage('authMessage', 'Solicitação recebida. Aguarde a aprovação de um ADM para acessar o painel.', 'success');
     if (data.session) await supabase.auth.signOut();
   } catch(e) { console.error(e); showMessage('authMessage', 'Não foi possível criar a conta: ' + e.message); }
   finally { button.disabled = false; }
