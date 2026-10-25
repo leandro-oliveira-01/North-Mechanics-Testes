@@ -154,7 +154,7 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
   </div>
   <div id="adminPanel" class="panel wide hidden premium-app">
     <aside class="app-sidebar" aria-label="Menu do painel">
-      <div class="side-title"><span class="side-monogram">NM</span><span><strong>DETROIT</strong><small>MANAGEMENT V2</small></span></div>
+      <div class="side-title"><span class="side-monogram">DM</span><span><strong>DETROIT</strong><small>MANAGEMENT V2</small></span></div>
       <div class="side-group-title">WORKSPACE</div>
       <div class="sidebar-nav" id="adminTabs">
         <button type="button" id="tabDashboard" class="active" onclick="switchAdminTab('dashboard')"><span aria-hidden="true">◫</span> Visão geral</button>
@@ -453,7 +453,7 @@ async function renderRequests() {
   }
   requests = data || [];
   refreshDashboard(requests);
-  const { data: colleagues, error: colleagueError } = await supabase.rpc('Detroit_active_recruiters');
+  const { data: colleagues, error: colleagueError } = await supabase.rpc('north_active_recruiters');
   if (colleagueError) {
     console.error('Falha ao consultar responsaveis', colleagueError);
     showMessage('v2StatusMessage', 'A lista de responsáveis não pôde ser carregada. Confira a migração SQL da etapa 1. ' + (colleagueError.message || ''));
@@ -553,7 +553,7 @@ $('requestList').addEventListener('click',async event=>{
     if(transfer&&!target){showMessage('v2StatusMessage','Escolha o novo responsável antes de transferir.');return;}
     if(release&&!confirm('Liberar esta inscrição para que outra pessoa possa assumir?'))return;
     if(transfer&&!confirm('Transferir esta inscrição para o membro selecionado?'))return;
-    const fn=claim?'detroit_take_candidate':release?'detroit_release_candidate':'detroit_transfer_candidate';
+    const fn=claim?'north_take_candidate':release?'north_release_candidate':'north_transfer_candidate';
     const args={p_inscricao_id:Number(id)};
     if(transfer)args.p_novo_responsavel=target;
     ownerButton.disabled=true;
@@ -578,7 +578,7 @@ $('requestList').addEventListener('click',async event=>{
   button.disabled=true;
   clearMessage('v2StatusMessage');
   try {
-    const {error}=await supabase.rpc('detroit_set_candidate_status',{p_inscricao_id:Number(id),p_status:select.value});
+    const {error}=await supabase.rpc('north_set_candidate_status',{p_inscricao_id:Number(id),p_status:select.value});
     if(error) throw error;
     showMessage('v2StatusMessage','Status atualizado com sucesso.','success');
     await renderRequests();
